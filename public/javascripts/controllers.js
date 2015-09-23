@@ -1,5 +1,8 @@
-var app = angular.module('citi-pretotype', ['ngTouch']);
+var app = angular.module('citi-pretotype', ['ngTouch', 'ngRoute']);
 
+app.config() {
+    
+}
 app.controller('MainCtrl', ['$scope', function($scope) {
 
 }]);
@@ -14,7 +17,7 @@ app.controller('AuthCtrl', ['$scope', function($scope) {
         $scope.showLogin = false;
     };
 
-    $scope.socket = io.connect('http://192.168.1.4:8888');
+    $scope.socket = io.connect('http://10.128.0.204:8888');
 
     $scope.socket.on('connect', function () {
         $scope.socket.on('decision', function (data) {
@@ -39,7 +42,7 @@ app.controller('AuthCtrl', ['$scope', function($scope) {
 }]);
 
 app.controller('AdminCtrl', ['$scope', function($scope) {
-    $scope.socket = io.connect('http://192.168.1.4:8888');
+    $scope.socket = io.connect('http://10.128.0.204:8888');
     $scope.submitDecision = function() {
         $scope.socket.emit('authenticate', $scope.message);
     }
